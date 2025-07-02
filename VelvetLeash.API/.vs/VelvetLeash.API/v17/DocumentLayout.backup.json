@@ -1,0 +1,425 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\migrations\\20250624001950_appsps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\migrations\\20250624001950_appsps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\petsitterscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\petsitterscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\usernotificationsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\usernotificationsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\petsitterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\petsitterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\petsitter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\petsitter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\bookingmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\bookingmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\migrations\\20250624161007_addbookingstable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\migrations\\20250624161007_addbookingstable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\bookingmessagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\bookingmessagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\usernotificationsettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\usernotificationsettingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\data\\applicationdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\data\\applicationdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\model\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\model\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\bookingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\petsitterservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\petsitterservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624145459_AddPetSitterTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VelvetLeash.API\\Migrations\\20250624145459_AddPetSitterTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624000055_app.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VelvetLeash.API\\Migrations\\20250624000055_app.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250623234600_app.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VelvetLeash.API\\Migrations\\20250623234600_app.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250623234421_aaaa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VelvetLeash.API\\Migrations\\20250623234421_aaaa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|c:\\users\\dell\\source\\repos\\velvetleash.api\\velvetleash.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C4086BD6-1412-40D4-A312-F965EFAFC1FA}|VelvetLeash.API\\VelvetLeash.API.csproj|solutionrelative:velvetleash.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Pet.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\Pet.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\Pet.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\Pet.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\Pet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T22:25:58.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PetSitter.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\PetSitter.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\PetSitter.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\PetSitter.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\PetSitter.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T14:25:48.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PetSitterService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\PetSitterService.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\PetSitterService.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\PetSitterService.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\PetSitterService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T15:42:03.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserNotificationSetting.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\UserNotificationSetting.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\UserNotificationSetting.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\UserNotificationSetting.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\UserNotificationSetting.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:43:31.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PetSittersController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\PetSittersController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\PetSittersController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\PetSittersController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\PetSittersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T14:29:53.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20250624001950_appsps.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624001950_appsps.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Migrations\\20250624001950_appsps.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624001950_appsps.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Migrations\\20250624001950_appsps.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T00:19:50.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Program.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Program.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Program.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T22:32:23.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookingMessage.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\BookingMessage.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\BookingMessage.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\BookingMessage.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\BookingMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:30:46.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\Booking.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\Booking.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\Booking.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\Booking.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAkwCgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:08:12.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20250624161007_AddBookingsTable.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624161007_AddBookingsTable.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Migrations\\20250624161007_AddBookingsTable.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624161007_AddBookingsTable.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Migrations\\20250624161007_AddBookingsTable.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:10:19.669Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T22:32:07.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BookingMessagesController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\BookingMessagesController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\BookingMessagesController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\BookingMessagesController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\BookingMessagesController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAswD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:40:48.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserNotificationSettingsController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\UserNotificationSettingsController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\UserNotificationSettingsController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\UserNotificationSettingsController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\UserNotificationSettingsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAADwvzgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:45:30.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PetSitterServicesController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\PetSitterServicesController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\PetSitterServicesController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\PetSitterServicesController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\PetSitterServicesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T15:49:19.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\ReviewsController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\ReviewsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:27:49.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ApplicationDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Data\\ApplicationDbContextFactory.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Data\\ApplicationDbContextFactory.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Data\\ApplicationDbContextFactory.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Data\\ApplicationDbContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T23:58:25.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\Review.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Model\\Review.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Model\\Review.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Model\\Review.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:17:00.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "BookingsController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\BookingsController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\BookingsController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\BookingsController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\BookingsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T16:09:22.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20250624145459_AddPetSitterTable.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624145459_AddPetSitterTable.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Migrations\\20250624145459_AddPetSitterTable.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624145459_AddPetSitterTable.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Migrations\\20250624145459_AddPetSitterTable.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAswEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T14:54:59.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20250623234421_aaaa.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250623234421_aaaa.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Migrations\\20250623234421_aaaa.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250623234421_aaaa.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Migrations\\20250623234421_aaaa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T23:44:21.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "VelvetLeash.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-24T00:10:46.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\appsettings.json",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\appsettings.json",
+              "RelativeToolTip": "VelvetLeash.API\\appsettings.json",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-23T22:33:48.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PetsController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\PetsController.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Controllers\\PetsController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Controllers\\PetsController.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Controllers\\PetsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T23:31:22.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20250623234600_app.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250623234600_app.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Migrations\\20250623234600_app.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250623234600_app.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Migrations\\20250623234600_app.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T23:46:00.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20250624000055_app.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624000055_app.cs",
+              "RelativeDocumentMoniker": "VelvetLeash.API\\Migrations\\20250624000055_app.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\VelvetLeash.API\\VelvetLeash.API\\Migrations\\20250624000055_app.cs",
+              "RelativeToolTip": "VelvetLeash.API\\Migrations\\20250624000055_app.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T00:00:55.622Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -97,14 +97,14 @@ const InboxScreen = () => {
       )}
       {activeTab === 'Unread' && (
         <View style={styles.emptyStateContainer}>
-          <CustomIcon icon="hourglass" type="Feather" size={RFValue(120)} color={COLORS.NeutralGrey60} style={{ marginVertical: 32 }} />
+          <CustomIcon icon="hourglass" type="Ionicons" size={RFValue(120)} color={COLORS.NeutralGrey60} style={{ marginVertical: 32 }} />
           <Text style={styles.emptyTitle}>No unread conversations</Text>
           <Text style={styles.emptySubtitle}>you have read all the unread conversations{"\n"}in this folder</Text>
         </View>
       )}
       {activeTab === 'pending' && (
         <View style={styles.emptyStateContainer}>
-          <CustomIcon icon="hourglass" type="Feather" size={RFValue(120)} color={COLORS.NeutralGrey60} style={{ marginVertical: 32 }} />
+          <CustomIcon icon="hourglass" type="Ionicons" size={RFValue(120)} color={COLORS.NeutralGrey60} style={{ marginVertical: 32 }} />
           <Text style={styles.emptyTitle}>No pending conversations</Text>
           <Text style={styles.emptySubtitle}>you will find message from request you{"\n"}have not booked yet here.{"\n\n"}To help keep you safe, always{"\n"}communication on rover.</Text>
           <TouchableOpacity style={styles.findSitterButton}>
@@ -156,10 +156,13 @@ const InboxScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.StaticWhite,
+  paddingTop: hp('2%'),
+    paddingBottom: hp('2%'),
+    
   },
   header: {
     flexDirection: 'row',
@@ -212,7 +215,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT_POPPINS.regularFont,
     fontSize: RFValue(14),
     color: COLORS.TextPrimary,
-    marginLeft: wp('2%'),
+    marginLeft: wp('0%'),
   },
   emptyStateContainer: {
     flex: 1,
@@ -230,7 +233,7 @@ const styles = StyleSheet.create({
   },
   emptySubtitle: {
     fontFamily: FONT_POPPINS.regularFont,
-    fontSize: RFValue(14),
+    fontSize: RFValue(12),
     color: COLORS.NeutralGrey60,
     textAlign: 'center',
     marginBottom: hp('2%'),

@@ -230,6 +230,10 @@ export const useSignup = () => {
     console.log('Google signup pressed');
   };
 
+  const handleAppleSignup = () => {
+    console.log('Apple signup pressed');
+  };
+
   return {
     control,
     watch,
@@ -243,5 +247,6 @@ export const useSignup = () => {
     validationRules,
     handleFacebookSignup,
     handleGoogleSignup,
+    handleAppleSignup,
   };
 };

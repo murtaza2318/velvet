@@ -256,7 +256,7 @@ export const CustomText: React.FC<CustomTextProps> = ({
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: FONT_POPPINS.regularFont,
+    fontFamily: FONT_POPPINS.semiBoldFont,
     fontSize: RFValue(12.5),
   },
 });

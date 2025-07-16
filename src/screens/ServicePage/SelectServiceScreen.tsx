@@ -7,8 +7,9 @@ import {
   Image,
   SafeAreaView,
   Platform,
+  Text,
 } from 'react-native';
-import { COLORS, SHADOW } from '../../utils/theme';
+import { COLORS, SHADOW, FONT_POPPINS } from '../../utils/theme';
 import { CustomIcon } from '../../components/CustomIcon';
 import { CustomText } from '../../components/CustomText';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
@@ -17,6 +18,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const SelectServiceScreen = () => {
   const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
@@ -56,7 +58,7 @@ const SelectServiceScreen = () => {
   ];
 
   return (
-    <View style={{ flex: 1, position: 'relative' }}>
+    <View style={{ flex: 1 }}>
       <SafeAreaView style={styles.container}>
         <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
           <CustomText textType="BodyMediumRegular" color={COLORS.TextPrimary}>
@@ -69,14 +71,16 @@ const SelectServiceScreen = () => {
         </CustomText>
 
         <ScrollView
-          contentContainerStyle={[styles.servicesContainer, { paddingBottom: hp('45%') }]}
+          contentContainerStyle={styles.servicesContainer}
           showsVerticalScrollIndicator={false}
         >
           {services.map((service) => (
             <TouchableOpacity
               key={service.id}
               style={styles.serviceCard}
-              onPress={() => navigation.navigate(service.screen as keyof AuthStackNavigationType)}
+              onPress={() =>
+                service.screen && navigation.navigate(service.screen as keyof AuthStackNavigationType)
+              }
               activeOpacity={0.8}
             >
               <Image source={service.icon} style={styles.serviceIcon} />
@@ -98,38 +102,22 @@ const SelectServiceScreen = () => {
         style={styles.heroimage}
       />
 
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Inbox' as never)}>
-          <View style={styles.navIconWrapper}>
-            <CustomIcon icon="inbox" type="Feather" iconStyle={styles.navIcon} />
-          </View>
-          <CustomText textType="BodyMediumRegular" color={COLORS.TextPrimary}>
-            Inbox
-          </CustomText>
+      <View style={styles.bottomNavigation}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Inbox')}>
+          <CustomIcon icon="inbox" type="Feather" size={RFValue(20)} color={COLORS.NeutralGrey60} />
+          <Text style={styles.navText}>Inbox</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
-          <View style={styles.navIconWrapper}>
-            <CustomIcon icon="search" type="Feather" iconStyle={[styles.navIcon, { color: '#8F9E73' }]} />
-          </View>
-          <CustomText textType="BodyMediumRegular" color={'#8F9E73'}>
-            Services
-          </CustomText>
+          <CustomIcon icon="search" type="Feather" size={RFValue(20)} color={'#8F9E73'} />
+          <Text style={[styles.navText, styles.activeNavText]}>Services</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('YourPet' as never)}>
-          <View style={styles.navIconWrapper}>
-            <CustomIcon icon="heart" type="Feather" iconStyle={styles.navIcon} />
-          </View>
-          <CustomText textType="BodyMediumRegular" color={COLORS.TextPrimary}>
-            Your Pet
-          </CustomText>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('YourPet')}>
+          <CustomIcon icon="heart" type="Feather" size={RFValue(20)} color={COLORS.NeutralGrey60} />
+          <Text style={styles.navText}>Your Pet</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('More' as never)}>
-          <View style={styles.navIconWrapper}>
-            <CustomIcon icon="more-horizontal" type="Feather" iconStyle={styles.navIcon} />
-          </View>
-          <CustomText textType="BodyMediumRegular" color={COLORS.TextPrimary}>
-            More
-          </CustomText>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('More')}>
+          <CustomIcon icon="more-horizontal" type="Feather" size={RFValue(20)} color={COLORS.NeutralGrey60} />
+          <Text style={styles.navText}>More</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -139,7 +127,8 @@ const SelectServiceScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: hp('10%'),
+    paddingTop: hp('5%'),
+    paddingBottom: hp('2%'),
   },
   headerTitle: {
     textAlign: 'center',
@@ -148,6 +137,7 @@ const styles = StyleSheet.create({
   },
   servicesContainer: {
     paddingHorizontal: wp('5%'),
+    paddingBottom: hp('20%'),
   },
   serviceCard: {
     flexDirection: 'row',
@@ -172,34 +162,31 @@ const styles = StyleSheet.create({
   },
   heroimage: {
     position: 'absolute',
-    bottom: hp('1%'), // Just above bottom nav
+    bottom: hp('1%'),
     width: wp('100%'),
     height: hp('50%'),
     resizeMode: 'contain',
     zIndex: -1,
   },
-  bottomNav: {
+  bottomNavigation: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
     borderTopWidth: 1,
-    borderTopColor: COLORS.StaticWhite,
-    paddingVertical: hp('1.5%'),
+    borderTopColor: COLORS.NeutralGrey20,
+    paddingVertical: hp('2%'),
     backgroundColor: COLORS.StaticWhite,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
   },
   navItem: {
-    padding: wp('5%'),
     alignItems: 'center',
   },
-  navIconWrapper: {
-    marginBottom: hp('0.5%'),
+  navText: {
+    fontFamily: FONT_POPPINS.regularFont,
+    fontSize: RFValue(12),
+    color: COLORS.NeutralGrey60,
+    marginTop: hp('0.5%'),
   },
-  navIcon: {
-    fontSize: wp('6%'),
-    color: COLORS.TextPrimary,
+  activeNavText: {
+    color: '#8F9E73',
   },
 });
 

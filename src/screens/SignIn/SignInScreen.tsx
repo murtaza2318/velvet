@@ -32,7 +32,10 @@ const SignInScreen = () => {
       </View>
 
       {/* Sign In text */}
-      <TouchableOpacity style={styles.signInButton}>
+      <TouchableOpacity style={styles.signInButton} onPress={() => {
+            navigation.navigate("LoginScreen");
+          }}
+          activeOpacity={0.7}>
         <Text style={styles.signInButtonText}>Sign In</Text>
       </TouchableOpacity>
 

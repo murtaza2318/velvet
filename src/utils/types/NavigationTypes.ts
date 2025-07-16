@@ -5,6 +5,8 @@ export type RootStackNavigationType = {
   export type AuthStackNavigationType = {
     SignIn: undefined,
     SignUp: undefined,
+    LoginScreen: undefined,
+    ForgetPassword: undefined,
     Location: undefined,
     Onboarding: undefined,
     SelectService: undefined,

@@ -17,6 +17,7 @@ import {
 } from 'react-native-responsive-screen';
 import { useSignup } from './hooks/useSignup';
 import { COLORS } from '../../utils/theme';
+import { FONT_POPPINS } from '../../utils/theme';
 import CustomRHFTextInput from '../../components/CustomRHFTextInput';
 import { CustomText } from '../../components/CustomText';
 import SocialSignupButton from './components/SocialSignupButton';
@@ -34,6 +35,7 @@ const SignupScreen: React.FC = () => {
     validationRules,
     handleFacebookSignup,
     handleGoogleSignup,
+    handleAppleSignup,
   } = useSignup();
 
   const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
@@ -43,19 +45,19 @@ const SignupScreen: React.FC = () => {
     navigation.navigate('Boarding');
   };
 
-  const handleCancel = () => {
-    navigation.navigate('SignIn');
-  };
+  // const handleCancel = () => {
+  //   navigation.navigate('SignIn');
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : hp(2)}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
       >
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[styles.scrollContent, { paddingBottom: hp(10) }]}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
@@ -66,12 +68,38 @@ const SignupScreen: React.FC = () => {
                 style={styles.logo}
               />
             </View>
-            <TouchableOpacity onPress={handleCancel} style={styles.cancelButton}>
+            {/* <TouchableOpacity onPress={handleCancel} style={styles.cancelButton}>
               <CustomText textType="BodyLargeSemiBold" color={COLORS.NeutralGrey100}>
                 Cancel
               </CustomText>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
+
+          {/* Social Signup Buttons */}
+          <View style={styles.socialButtonsSection}>
+            <SocialSignupButton
+              type="apple"
+              onPress={handleAppleSignup}
+            />
+            <SocialSignupButton
+              type="facebook"
+              onPress={handleFacebookSignup}
+            />
+            <SocialSignupButton
+              type="google"
+              onPress={handleGoogleSignup}
+            />
+          </View>
+
+          {/* Or sign up with email */}
+          <CustomText
+            textType="BodyLargeSemiBold"
+            color={COLORS.TextPrimary}
+            center
+            textStyle={styles.orText}
+          >
+            or sign up with email
+          </CustomText>
 
           {/* Form */}
           <View style={styles.formContainer}>
@@ -84,6 +112,7 @@ const SignupScreen: React.FC = () => {
               type="standard"
               autoCapitalize="words"
               titleTextStyle={styles.fieldTitle}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
             />
             <CustomRHFTextInput
               control={control}
@@ -94,7 +123,7 @@ const SignupScreen: React.FC = () => {
               type="standard"
               autoCapitalize="words"
               titleTextStyle={styles.fieldTitle}
-              containerStyle={styles.fieldSpacing}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
             />
             <CustomRHFTextInput
               control={control}
@@ -106,7 +135,7 @@ const SignupScreen: React.FC = () => {
               keyboardType="numeric"
               maxLength={10}
               titleTextStyle={styles.fieldTitle}
-              containerStyle={styles.fieldSpacing}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
             />
             <CustomRHFTextInput
               control={control}
@@ -118,7 +147,7 @@ const SignupScreen: React.FC = () => {
               keyboardType="email-address"
               autoCapitalize="none"
               titleTextStyle={styles.fieldTitle}
-              containerStyle={styles.fieldSpacing}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
             />
             <CustomRHFTextInput
               control={control}
@@ -130,7 +159,7 @@ const SignupScreen: React.FC = () => {
               secureTextEntry
               autoCapitalize="none"
               titleTextStyle={styles.fieldTitle}
-              containerStyle={styles.fieldSpacing}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
             />
             <CustomRHFTextInput
               control={control}
@@ -142,7 +171,7 @@ const SignupScreen: React.FC = () => {
               multiline
               numberOfLines={2}
               titleTextStyle={styles.fieldTitle}
-              containerStyle={styles.fieldSpacing}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
             />
           </View>
 
@@ -154,40 +183,12 @@ const SignupScreen: React.FC = () => {
           >
             <CustomText
               textType="BodyLargeSemiBold"
-              color={COLORS.NeutralGrey0}
+              color={COLORS.StaticWhite}
               textStyle={styles.saveButtonText}
             >
               {isLoading ? 'Saving...' : 'Save'}
             </CustomText>
           </TouchableOpacity>
-
-          {/* Social Login */}
-          <View style={styles.socialSection}>
-            <CustomText
-              textType="BodyMediumRegular"
-              color={COLORS.NeutralGrey60}
-              center
-              textStyle={styles.orText}
-            >
-              or login with
-            </CustomText>
-
-            <SocialSignupButton
-              type="facebook"
-              onPress={handleFacebookSignup}
-              text="Continue with Facebook"
-              textColor={COLORS.TextPrimary} // Fixed
-              iconColor={COLORS.TextPrimary} // Fixed
-            />
-
-            <SocialSignupButton
-              type="google"
-              onPress={handleGoogleSignup}
-              text="Continue with Google"
-              textColor={COLORS.StaticWhite}
-              iconColor={COLORS.StaticWhite}
-            />
-          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -197,11 +198,15 @@ const SignupScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.NeutralGrey0,
+    backgroundColor: '#FFFFF',
+    alignItems: 'center',
+    paddingTop: 20,
   },
   scrollContent: {
-    paddingHorizontal: wp(6),
-    paddingBottom: hp(5),
+    // paddingHorizontal: wp(1), // keep this commented or removed
+    paddingBottom: hp(2), // already reduced
+    alignItems: 'center',
+    width: '100%',
   },
   header: {
     flexDirection: 'row',
@@ -210,45 +215,75 @@ const styles = StyleSheet.create({
     paddingTop: hp(4),
     paddingBottom: hp(2),
     height: hp(10),
+    width: '100%',
   },
   logoContainer: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    flex: 1,
+    marginLeft: -15, // ensure no left margin
+    paddingLeft: 0, // ensure no left padding
   },
   logo: {
     width: width * 0.2,
     height: width * 0.2,
     resizeMode: 'contain',
+    alignSelf: 'flex-start', // ensure logo aligns to the left
+    marginLeft: 0, // ensure no left margin
+    paddingLeft: 0, // ensure no left padding
   },
-  cancelButton: {
-    paddingVertical: RFValue(2),
+  // cancelButton: {
+  //   paddingVertical: RFValue(2),
+  //   paddingHorizontal: RFValue(10),
+  // },
+  socialButtonsSection: {
+    width: '100%',
+    marginTop: hp(2),
+    marginBottom: hp(2),
+    alignItems: 'center',
   },
   formContainer: {
-    paddingBottom: hp(1),
+    width: '100%',
+    marginTop: hp(2),
+    marginBottom: hp(2),
   },
   fieldTitle: {
-    fontSize: RFValue(10),
-    fontWeight: '600',
+    fontSize: RFValue(14),
+    marginTop:2,
+    marginBottom:-2,
+    color:'black',
+    fontFamily: FONT_POPPINS.semiBoldFont,
   },
   fieldSpacing: {
-    marginTop: hp(1),
+    borderRadius:40,
+    marginTop: hp(0.5),
   },
+  roundedInput: {
+  borderRadius: 12,
+  borderWidth: 1,
+  borderColor: COLORS.NeutralGrey20, // Optional: control border color
+  overflow: 'hidden',
+},
   saveButton: {
-    backgroundColor: COLORS.Primary,
-    borderRadius: RFValue(20),
-    height: RFValue(36),
+    backgroundColor: '#8F9E73',
+    borderRadius: 28,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: hp(2),
+    marginBottom: 0,
+    
+    width: '100%',
+    alignSelf: 'center',
   },
   saveButtonText: {
-    fontSize: RFValue(13),
-  },
-  socialSection: {
-    marginBottom: hp(2),
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: FONT_POPPINS.semiBoldFont,
   },
   orText: {
-    marginBottom: hp(1),
-    fontSize: RFValue(11),
+    marginTop: -10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontFamily: FONT_POPPINS.semiBoldFont,
   },
 });
 

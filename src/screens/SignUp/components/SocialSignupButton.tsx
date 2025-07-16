@@ -5,9 +5,10 @@ import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { CustomText } from '../../../components/CustomText';
 import { CustomIcon } from '../../../components/CustomIcon';
 import { COLORS } from '../../../utils/theme';
+import { IconType } from '../../../components/CustomIcon/interface';
 
 interface SocialSignupButtonProps {
-  type: 'facebook' | 'google';
+  type: 'facebook' | 'google' | 'apple';
   onPress: () => void;
   style?: ViewStyle;
   text?: string;
@@ -24,30 +25,53 @@ const SocialSignupButton: React.FC<SocialSignupButtonProps> = ({
   iconColor,
 }) => {
   const isFacebook = type === 'facebook';
+  const isGoogle = type === 'google';
+  const isApple = type === 'apple';
 
-  const defaultText = isFacebook ? 'Sign Up with Facebook' : 'Sign Up with Google';
-  const defaultTextColor = isFacebook ? COLORS.NeutralGrey0 : COLORS.StaticWhite;
-  const defaultIconColor = isFacebook ? COLORS.NeutralGrey0 : COLORS.StaticWhite;
+  let defaultText = '';
+  let defaultTextColor = COLORS.StaticWhite;
+  let defaultIconColor = COLORS.StaticWhite;
+  let buttonStyle: ViewStyle[] = [styles.socialButton];
+
+  if (isApple) {
+    defaultText = 'Sign Up with Apple';
+    buttonStyle.push(styles.appleButton);
+    defaultTextColor = COLORS.StaticWhite;
+    defaultIconColor = COLORS.StaticWhite;
+  } else if (isFacebook) {
+    defaultText = 'Sign Up with Facebook';
+    buttonStyle.push(styles.facebookButton);
+    defaultTextColor = COLORS.TextPrimary;
+    defaultIconColor = COLORS.TextPrimary;
+  } else if (isGoogle) {
+    defaultText = 'Sign Up with Gmail';
+    buttonStyle.push(styles.googleButton);
+    defaultTextColor = COLORS.StaticWhite;
+    defaultIconColor = COLORS.StaticWhite;
+  }
+
+  let iconProps: {
+    icon: string;
+    type: IconType;
+    color: string;
+  } = { icon: '', type: 'FontAwesome', color: iconColor ?? defaultIconColor };
+  if (isFacebook) iconProps = { icon: 'facebook', type: 'FontAwesome', color: iconColor ?? defaultIconColor };
+  if (isGoogle) iconProps = { icon: 'google', type: 'FontAwesome', color: iconColor ?? defaultIconColor };
+  if (isApple) iconProps = { icon: 'apple', type: 'FontAwesome', color: iconColor ?? defaultIconColor };
 
   return (
     <TouchableOpacity
-      style={[
-        styles.socialButton,
-        isFacebook ? styles.facebookButton : styles.googleButton,
-        style,
-      ]}
+      style={[...buttonStyle, style]}
       onPress={onPress}
       activeOpacity={0.8}
     >
       <CustomIcon
-        icon={isFacebook ? 'facebook' : 'google'}
-        type="FontAwesome"
-        size={RFValue(16)}
-        color={iconColor ?? defaultIconColor}
+        {...iconProps}
+        size={28}
         style={styles.socialIcon}
       />
       <CustomText
-        textType="BodyMediumSemiBold"
+        textType="BodyLargeSemiBold"
         color={textColor ?? defaultTextColor}
         textStyle={styles.socialButtonText}
       >
@@ -62,22 +86,30 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: RFValue(48),
-    borderRadius: RFValue(24),
-    marginVertical: RFValue(6),
-    paddingHorizontal: wp(4),
+    height: 40,
+    borderRadius: 28,
+    marginVertical: 3,
+    paddingHorizontal: 30,
+    width: '100%',
+    alignSelf: 'center',
+  },
+  appleButton: {
+    backgroundColor: '#A3A19E',
   },
   facebookButton: {
-    backgroundColor: COLORS.Secondary, 
+    backgroundColor: '#F6EDCA',
+    borderWidth: 2,
+    borderColor: '#A9A59F',
   },
   googleButton: {
-    backgroundColor: COLORS.Primary, 
+    backgroundColor: '#8F9E73',
   },
   socialIcon: {
-    marginRight: RFValue(10),
+    marginRight: 16,
   },
   socialButtonText: {
-    fontSize: RFValue(14),
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
 

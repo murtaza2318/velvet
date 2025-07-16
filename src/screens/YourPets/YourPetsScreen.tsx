@@ -6,12 +6,15 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
 import { CustomIcon } from '../../components/CustomIcon';
 import { COLORS, FONT_POPPINS } from '../../utils/theme';
+import React from 'react';
+import { styles } from '../Inbox/InboxScreen';
 
 interface PetCardProps {
   name: string;
@@ -54,24 +57,27 @@ const YourPetsScreen = () => {
   };
 
   const handlePetPress = () => {
-    // Navigate to pet details
     navigation.navigate('PetDetails' as never);
   };
 
   const handleGetQuote = () => {
-    // Handle get quote action
     console.log('Get quote pressed');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollViewContent}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Your Pets</Text>
         </View>
 
-        {/* Pet Insurance Section */}
+        {/* Insurance Section */}
         <View style={styles.insuranceSection}>
           <Text style={styles.insuranceTitle}>Shop for pet insurance</Text>
           <Text style={styles.insuranceDescription}>
@@ -82,10 +88,10 @@ const YourPetsScreen = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Pets Section */}
+        {/* Pet Section */}
         <View style={styles.petsSection}>
           <Text style={styles.sectionTitle}>Pets</Text>
-          
+
           <PetCard
             name="Kali"
             breed="Persian"
@@ -107,16 +113,16 @@ const YourPetsScreen = () => {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNavigation}>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Inbox')}>
+        <TouchableOpacity style={styles.navItem}>
           <CustomIcon
             icon="inbox"
             type="Feather"
             size={RFValue(20)}
-            color={COLORS.NeutralGrey60}
+            color="#8F9E73"
           />
-          <Text style={styles.navText}>Inbox</Text>
+          <Text style={[styles.navText, styles.activeNavText]}>Inbox</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('SelectService')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('SelectService' as never)}>
           <CustomIcon
             icon="search"
             type="Feather"
@@ -125,16 +131,16 @@ const YourPetsScreen = () => {
           />
           <Text style={styles.navText}>Services</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('YourPet' as never)}>
           <CustomIcon
             icon="heart"
             type="Feather"
             size={RFValue(20)}
-            color="#8F9E73"
+            color={COLORS.NeutralGrey60}
           />
-          <Text style={[styles.navText, styles.activeNavText]}>Your Pet</Text>
+          <Text style={styles.navText}>Your Pet</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('More')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('More' as never)}>
           <CustomIcon
             icon="more-horizontal"
             type="Feather"
@@ -156,9 +162,12 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
+  scrollViewContent: {
+    paddingTop: hp('2%'),
+    paddingBottom: hp('2%'),
+  },
   header: {
     paddingHorizontal: wp('5%'),
-    paddingTop: hp('2%'),
     paddingBottom: hp('3%'),
     alignItems: 'center',
   },
@@ -225,6 +234,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+    bottomNavigation: {
+       flexDirection: 'row',
+       justifyContent: 'space-around',
+       paddingVertical: hp('2%'),
+       borderTopWidth: 1,
+       borderTopColor: COLORS.NeutralGrey20,
+     },
+     navItem: {
+       alignItems: 'center',
+     },
+     navText: {
+       fontFamily: FONT_POPPINS.regularFont,
+       fontSize: RFValue(12),
+       color: COLORS.NeutralGrey60,
+       marginTop: hp('0.5%'),
+     },
+     activeNavText: {
+       color: '#8F9E73',
+     },
   petIcon: {
     width: wp('12%'),
     height: wp('12%'),

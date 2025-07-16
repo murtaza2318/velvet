@@ -4,7 +4,6 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
-  Image,
   StatusBar,
 } from 'react-native';
 import {
@@ -39,13 +38,19 @@ const MoreScreen = () => {
     title,
     onPress,
   }: {
-    icon: any;
+    icon: string;
     title: React.ReactNode;
     onPress: () => void;
   }) => (
     <TouchableOpacity style={styles.menuButton} onPress={onPress}>
       <View style={styles.menuButtonContent}>
-        <Image source={icon} style={styles.menuIcon} />
+        <CustomIcon
+          icon={icon}
+          type="Ionicons"
+          size={RFValue(20)}
+          color={COLORS.TextPrimary}
+          style={styles.menuIcon}
+        />
         {typeof title === 'string' ? (
           <CustomText
             textType="BodyLargeRegular"
@@ -58,8 +63,8 @@ const MoreScreen = () => {
         )}
       </View>
       <CustomIcon
-        icon="chevron-right"
-        type="FontAwesome"
+        icon="chevron-forward"
+        type="Ionicons"
         size={RFValue(15)}
         color={COLORS.NeutralGrey60}
       />
@@ -80,8 +85,8 @@ const MoreScreen = () => {
         </CustomText>
         <TouchableOpacity onPress={handleNextPress} style={styles.rightIcon}>
           <CustomIcon
-            icon="arrow-right"
-            type="FontAwesome"
+            icon="arrow-forward"
+            type="Ionicons"
             size={RFValue(20)}
             color={COLORS.TextPrimary}
           />
@@ -99,34 +104,34 @@ const MoreScreen = () => {
         </CustomText>
         <View style={styles.menuContainer}>
           <MenuButton
-            icon={require('../../../assets/icons/personIcon.png')}
+            icon="person"
             title="Profile"
             onPress={() => navigation.navigate('AccountInfo' as never)}
           />
           <MenuButton
-            icon={require('../../../assets/icons/heartpet.png')}
+            icon="heart"
             title="Your pets"
             onPress={handlePetDetails}
           />
           <MenuButton
-            icon={require('../../../assets/icons/Checkcircle.png')}
+            icon="card"
             title="Payment"
-            onPress={() => {}}
+            onPress={() => navigation.navigate('PaymentScreen' as never)}
           />
           <MenuButton
-            icon={require('../../../assets/icons/settingIcon.png')}
+            icon="settings"
             title="Settings"
             onPress={handleSettings}
           />
           <MenuButton
-            icon={require('../../../assets/icons/heartIcon.png')}
+            icon="heart-outline"
             title="Become a sitter"
             onPress={() => navigation.navigate('BecomeSitter')}
           />
           <MenuButton
-            icon={require('../../../assets/icons/helpicon.png')}
+            icon="help-circle"
             title="Help Center & Velvet Support"
-            onPress={() => navigation.navigate({ name: 'VelvetSupport' })}
+            onPress={() => navigation.navigate('VelvetSupport')}
           />
         </View>
 
@@ -136,35 +141,38 @@ const MoreScreen = () => {
         </CustomText>
         <View style={styles.menuContainer}>
           <MenuButton
-            icon={require('../../../assets/icons/personIcon.png')}
+            icon="person-add"
             title={[
               <CustomText key="invite" textType="BodyLargeRegular" color={COLORS.TextPrimary}>Invite a friend</CustomText>,
               <CustomText key="subtitle" textType="CaptionRegular" color={COLORS.NeutralGrey60} style={{ marginTop: 2 }}>
                 Earn $20 when they book
               </CustomText>
             ]}
-            onPress={() => navigation.navigate('InviteFriend')}
+              onPress={() => navigation.navigate('InviteFriend' as never)}
           />
           <MenuButton
-            icon={require('../../../assets/icons/Checkcircle.png')}
+            icon="pricetag"
             title="Apply promo codes"
-            onPress={() => {}}
+             onPress={() => navigation.navigate('PromoGiftCodesScreen' as never)}
           />
         </View>
       </View>
-
-      {/* Bottom Button */}
-      <View style={styles.bottomContainer}>
-        <TouchableOpacity
-          style={[styles.contactButton, isLoading && styles.contactButtonDisabled]}
-          onPress={handleContactSitter}
-          disabled={isLoading}>
-          <CustomText
-            textType="BodyLargeSemiBold"
-            color={COLORS.StaticWhite}
-            center>
-            {isLoading ? 'Loading...' : 'Contact this sitter'}
-          </CustomText>
+      <View style={styles.bottomNavigation}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Inbox' as never)}>
+          <CustomIcon icon="chatbubble-outline" type="Ionicons" size={RFValue(20)} color={COLORS.NeutralGrey60} />
+          <CustomText style={styles.navText}>Inbox</CustomText>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('SelectService' as never)}>
+          <CustomIcon icon="search" type="Ionicons" size={RFValue(20)} color={COLORS.NeutralGrey60} />
+          <CustomText style={styles.navText}>Services</CustomText>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('YourPet' as never)}>
+          <CustomIcon icon="heart-outline" type="Ionicons" size={RFValue(20)} color={COLORS.NeutralGrey60} />
+          <CustomText style={styles.navText}>Your Pet</CustomText>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItemActive}>
+          <CustomIcon icon="ellipsis-horizontal" type="Ionicons" size={RFValue(20)} color={'#8F9E73'} />
+          <CustomText style={styles.navTextActive}>More</CustomText>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -225,29 +233,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   menuIcon: {
-    width: RFValue(20),
-    height: RFValue(20),
     marginRight: wp(4),
-    tintColor: COLORS.TextPrimary,
   },
   menuText: {
     flex: 1,
   },
-  bottomContainer: {
-    paddingHorizontal: wp(4),
-    paddingBottom: hp(1),
+  bottomNavigation: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: hp(2),
+    borderTopWidth: 1,
+    borderTopColor: COLORS.NeutralGrey20,
+    backgroundColor: COLORS.StaticWhite,
+  },
+  navItem: {
     alignItems: 'center',
   },
-  contactButton: {
-    backgroundColor: COLORS.Primary,
-    paddingVertical: hp(2),
-    paddingHorizontal: wp(8),
-    borderRadius: RFValue(25),
-    width: wp(85),
-    marginBottom: hp(2),
+  navItemActive: {
+    alignItems: 'center',
   },
-  contactButtonDisabled: {
-    opacity: 0.6,
+  navText: {
+    fontSize: RFValue(13),
+    color: COLORS.NeutralGrey60,
+    marginTop: hp(0.5),
+  },
+  navTextActive: {
+    fontSize: RFValue(13),
+    color: '#8F9E73',
+    fontWeight: 'bold',
+    marginTop: hp(0.5),
   },
 });
 

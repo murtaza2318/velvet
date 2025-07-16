@@ -14,21 +14,38 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const ITEM_HEIGHT = 50;
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 
+// Define interfaces for props
+interface ServiceCardProps {
+  title: string;
+  price: string;
+  rate: string;
+  details: [string, string][];
+}
+
 const ProfileScreen = () => {
-  const [selectedService, setSelectedService] = useState('Drop-In Visits');
+  const serviceOptions = ['Home Sitting', 'Drop-In Visits', 'Dog Walking'];
+  const [selectedService, setSelectedService] = useState(serviceOptions[1]);
   const [selectedDate, setSelectedDate] = useState('');
   const scrollY = useRef(new Animated.Value(0)).current;
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<ScrollView>(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  const serviceOptions = ['Home Sitting', 'Drop-In Visits', 'Dog Walking'];
+  const handleDropdownSelect = (option: string, index: number) => {
+    setSelectedService(option);
+    setSelectedIndex(index);
+    setDropdownVisible(false);
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({ y: index * ITEM_HEIGHT, animated: true });
+    }
+  };
 
   const onScrollEnd = (e: { nativeEvent: { contentOffset: { y: number } } }) => {
     const index = Math.round(e.nativeEvent.contentOffset.y / ITEM_HEIGHT);
     setSelectedIndex(index);
     setSelectedService(serviceOptions[index]);
-    if (scrollRef.current && typeof (scrollRef.current as any).scrollTo === 'function') {
-      (scrollRef.current as any).scrollTo({ y: index * ITEM_HEIGHT, animated: true });
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({ y: index * ITEM_HEIGHT, animated: true });
     }
   };
 
@@ -83,10 +100,23 @@ const ProfileScreen = () => {
       {/* Calendar */}
       <View style={styles.calendarSection}>
         <Text style={styles.calendarTitle}>Calendar</Text>
-        <TouchableOpacity style={styles.dropdown}>
+        <TouchableOpacity style={styles.dropdown} onPress={() => setDropdownVisible(!dropdownVisible)}>
           <Text style={styles.dropdownText}>{selectedService}</Text>
-          <Icon name="chevron-down" size={20} />
+          <Icon name={dropdownVisible ? 'chevron-up' : 'chevron-down'} size={20} />
         </TouchableOpacity>
+        {dropdownVisible && (
+          <View style={styles.dropdownOptions}>
+            {serviceOptions.map((option, index) => (
+              <TouchableOpacity
+                key={option}
+                onPress={() => handleDropdownSelect(option, index)}
+                style={styles.dropdownOptionItem}
+              >
+                <Text style={styles.dropdownOptionText}>{option}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
         <Calendar
           onDayPress={(day) => setSelectedDate(day.dateString)}
           markedDates={{
@@ -124,16 +154,11 @@ const ProfileScreen = () => {
           ))}
         </Animated.ScrollView>
       </View>
-
-      {/* CTA */}
-      <TouchableOpacity style={styles.cta}>
-        <Text style={styles.ctaText}>Contact this sitter</Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 };
 
-const ServiceCard = ({ title, price, rate, details }) => (
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, price, rate, details }) => (
   <View style={styles.card}>
     <View style={styles.cardHeader}>
       <View style={styles.cardTitleContainer}>
@@ -153,11 +178,11 @@ const ServiceCard = ({ title, price, rate, details }) => (
   </View>
 );
 
-const PetIcons = () => (
+const PetIcons: React.FC = () => (
   <View style={styles.petIconsContainer}>
     <View style={styles.petRow}>
       <View style={styles.petIcon}>
-        <Icon name="dog" size={24} color="#000" />
+        <Icon name="cat" size={24} color="#000" />
         <Text style={styles.petLabel}>Cats</Text>
       </View>
       <View style={styles.petIcon}>
@@ -243,6 +268,23 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   dropdownText: { fontSize: 14 },
+  dropdownOptions: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 6,
+    backgroundColor: '#fff',
+    marginBottom: 12,
+    marginTop: -10,
+  },
+  dropdownOptionItem: {
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  dropdownOptionText: {
+    fontSize: 14,
+    color: '#333',
+  },
   doneText: { textAlign: 'center', color: '#7a8659', marginTop: 12 },
   bottomNavVertical: {
     height: 150,

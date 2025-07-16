@@ -41,6 +41,13 @@ const GeneralSettingsScreen = () => {
 
   const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
   
+  function handleSectionPress(section: string): void {
+    if (section === 'notifications') {
+      // Navigate back to main settings screen since NotificationSettings doesn't exist
+      navigation.navigate('Notification');
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -48,17 +55,17 @@ const GeneralSettingsScreen = () => {
           {/* Header */}
           <View style={styles.header}>
             <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <CustomIcon
-              type="Ionicons"
-              icon="arrow-back"
-              size={24}
-              color={COLORS.TextPrimary}
-            />
+              <CustomIcon
+                type="Ionicons"
+                icon="arrow-back"
+                size={24}
+                color={COLORS.TextPrimary}
+              />
             </TouchableOpacity>
             <CustomText 
               textType="H6Regular" 
               color={COLORS.TextPrimary} 
-              textStyle={styles.headerTitle}
+              style={styles.headerTitle}
             >
               Settings
             </CustomText>
@@ -66,21 +73,26 @@ const GeneralSettingsScreen = () => {
 
           {/* Content Container */}
           <View style={styles.contentContainer}>
-            {/* General Section Title */}
-            <CustomText 
-              textType="H6SemiBold" 
-              color={COLORS.TextPrimary} 
-              textStyle={styles.sectionTitle}
-            >
-              General
-            </CustomText>
+            {/* Tabs Row */}
+            <View style={styles.tabsRow}>
+              <View style={[styles.tab, styles.tabActive]}>
+                <CustomText textType="BodyMediumSemiBold" color={COLORS.TextPrimary} style={styles.tabTextActive}>
+                  General
+                </CustomText>
+              </View>
+              <TouchableOpacity style={styles.tab} onPress={() => handleSectionPress('notifications')}>
+                <CustomText textType="BodyMediumSemiBold" color={COLORS.NeutralGrey60} style={styles.tabText}>
+                  Notifications
+                </CustomText>
+              </TouchableOpacity>
+            </View>
 
             {/* Time Zone Section */}
             <View style={styles.fieldSection}>
               <CustomText 
                 textType="BodyMediumSemiBold" 
                 color={COLORS.TextPrimary} 
-                textStyle={styles.fieldLabel}
+                style={styles.fieldLabel}
               >
                 Time Zone
               </CustomText>
@@ -98,14 +110,14 @@ const GeneralSettingsScreen = () => {
               <CustomText 
                 textType="BodyMediumSemiBold" 
                 color={COLORS.TextPrimary} 
-                textStyle={styles.fieldLabel}
+                style={styles.fieldLabel}
               >
                 Your Mobile Number
               </CustomText>
               <CustomText 
                 textType="BodyMediumRegular" 
                 color={COLORS.BorderPrimary} 
-                textStyle={styles.description}
+                style={styles.description}
               >
                 Which verification number would you like to use for{'\n'}text alerts?
               </CustomText>
@@ -114,7 +126,7 @@ const GeneralSettingsScreen = () => {
                 <CustomText 
                   textType="BodyMediumRegular" 
                   color={COLORS.Primary} 
-                  textStyle={styles.updateLink}
+                  style={styles.updateLink}
                   underline
                 >
                   Update Number
@@ -164,7 +176,7 @@ const GeneralSettingsScreen = () => {
                   <CustomText 
                     textType="BodyMediumRegular" 
                     color={COLORS.StaticBlack} 
-                    textStyle={styles.phoneNumber}
+                    style={styles.phoneNumber}
                   >
                     {watchedValues.mobileNumber || '+1 832-616-0981'}
                   </CustomText>
@@ -180,14 +192,14 @@ const GeneralSettingsScreen = () => {
               <CustomText 
                 textType="BodyMediumSemiBold" 
                 color={COLORS.TextPrimary} 
-                textStyle={styles.fieldLabel}
+                style={styles.fieldLabel}
               >
                 Private Velvet Leash Co Number
               </CustomText>
               <CustomText 
                 textType="BodyMediumRegular" 
                 color={COLORS.BorderPrimary} 
-                textStyle={styles.privateNumberDescription}
+                style={styles.privateNumberDescription}
               >
                 Velvet number allow you to book services without sharing your real phone number. When would you like to be contacted on your Velvet number?
               </CustomText>
@@ -205,7 +217,7 @@ const GeneralSettingsScreen = () => {
               <CustomText 
                 textType="BodyMediumRegular" 
                 color={COLORS.Primary} 
-                textStyle={styles.deleteLink}
+                style={styles.deleteLink}
                 underline
               >
                 Delete or deactivate your account
@@ -228,7 +240,7 @@ const GeneralSettingsScreen = () => {
             <CustomText 
               textType="BodyLargeSemiBold" 
               color={COLORS.StaticWhite} 
-              textStyle={styles.saveButtonText}
+              style={styles.saveButtonText}
             >
               Save Settings
             </CustomText>
@@ -248,6 +260,22 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
+  },
+  tabsRow: {
+    flexDirection: 'row',
+    padding: wp(4),
+  },
+  tab: {
+    padding: wp(2),
+  },
+  tabActive: {
+    backgroundColor: COLORS.NeutralGrey10,
+  },
+  tabTextActive: {
+    fontFamily: 'Poppins-SemiBold',
+  },
+  tabText: {
+    fontFamily: 'Poppins-Regular',
   },
   screenContainer: {
     flex: 1,

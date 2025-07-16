@@ -11,8 +11,8 @@ export type RootStackNavigationType = {
     Onboarding: undefined,
     SelectService: undefined,
     Boarding: undefined,
-    Searching: undefined,
-    BoardingSearch: undefined,
+    Searching: { service: string },
+    BoardingSearch: { service: string },
     More: undefined,
     Settings: undefined,
     GeneralSettings: undefined,
@@ -26,6 +26,12 @@ export type RootStackNavigationType = {
     AccountUpdates: undefined,
     BecomeSitter: undefined,
     VelvetSupport: undefined,
+    ProfileScreen: { profileId: string }, // required by your code
+
+    HouseSitting: undefined,
+    DropinVisits: undefined,
+    DogWalking: undefined,
+    DoggyDayCare: undefined,
   };
   
   

@@ -5,7 +5,7 @@ import { ScrollView, View, StyleSheet } from 'react-native';
 import ProfileHeader from './components/ProfileHeader';
 import StarSitterStatus from './components/StarSitterStatus';
 import AboutSection from './components/AboutSection';
-import SkillsSection from './components/SkillsSection';
+// import SkillsSection from './components/SkillsSection';
 import HomeDetails from './components/HomeDetails';
 import LocationMap from './components/LocationMap';
 import ContactButton from './components/ContactButton';
@@ -15,7 +15,7 @@ const ProfileScreen = () => (
     <ProfileHeader />
     <StarSitterStatus />
     <AboutSection />
-    <SkillsSection />
+    {/* <SkillsSection /> */}
     <HomeDetails />
     <LocationMap />
     <ContactButton />

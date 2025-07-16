@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   },
   testimonialImage: {
     width: '100%',
-    height: hp('25%'),
+    height: hp('50%'),
   },
   imageWithCard: { marginBottom: hp('2%') },
   testimonialCardOverlay: {

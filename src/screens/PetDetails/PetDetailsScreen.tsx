@@ -471,6 +471,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT_POPPINS.mediumFont,
     fontSize: RFValue(16),
     color: COLORS.TextPrimary,
+    marginTop: hp('3%'),
   },
   headerAction: {
     fontFamily: FONT_POPPINS.regularFont,

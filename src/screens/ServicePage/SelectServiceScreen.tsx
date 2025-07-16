@@ -36,24 +36,28 @@ const SelectServiceScreen = () => {
       name: 'House Sitting',
       description: 'in your home',
       icon: require('../../../assets/icons/house_sitting.png'),
+      screen: 'HouseSitting',
     },
     {
       id: '3',
       name: 'Drop-in Visits',
       description: 'visits in your home',
       icon: require('../../../assets/icons/dog_walking.png'),
+      screen: 'DropinVisits',
     },
     {
       id: '4',
       name: 'Doggy Day Care',
       description: "in the sitter's home",
       icon: require('../../../assets/icons/Sun.png'),
+      screen: 'DoggyDayCare',
     },
     {
       id: '5',
       name: 'Dog Walking',
       description: 'in your neighborhood',
       icon: require('../../../assets/icons/doggy_day_care.png'),
+      screen: 'DogWalking',
     },
   ];
 
@@ -78,9 +82,8 @@ const SelectServiceScreen = () => {
             <TouchableOpacity
               key={service.id}
               style={styles.serviceCard}
-              onPress={() =>
-                service.screen && navigation.navigate(service.screen as keyof AuthStackNavigationType)
-              }
+              onPress={() => navigation.navigate(service.screen as keyof AuthStackNavigationType, { service: service.name })}
+// <-- fix applied here
               activeOpacity={0.8}
             >
               <Image source={service.icon} style={styles.serviceIcon} />
@@ -103,7 +106,7 @@ const SelectServiceScreen = () => {
       />
 
       <View style={styles.bottomNavigation}>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Inbox')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Inbox' as never)}>
           <CustomIcon icon="inbox" type="Feather" size={RFValue(20)} color={COLORS.NeutralGrey60} />
           <Text style={styles.navText}>Inbox</Text>
         </TouchableOpacity>
@@ -111,11 +114,11 @@ const SelectServiceScreen = () => {
           <CustomIcon icon="search" type="Feather" size={RFValue(20)} color={'#8F9E73'} />
           <Text style={[styles.navText, styles.activeNavText]}>Services</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('YourPet')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('YourPet' as never)}>
           <CustomIcon icon="heart" type="Feather" size={RFValue(20)} color={COLORS.NeutralGrey60} />
           <Text style={styles.navText}>Your Pet</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('More')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('More' as never)}>
           <CustomIcon icon="more-horizontal" type="Feather" size={RFValue(20)} color={COLORS.NeutralGrey60} />
           <Text style={styles.navText}>More</Text>
         </TouchableOpacity>
@@ -162,7 +165,7 @@ const styles = StyleSheet.create({
   },
   heroimage: {
     position: 'absolute',
-    bottom: hp('0%'),
+    bottom: hp('-3%'),
     width: wp('100%'),
     height: hp('50%'),
     resizeMode: 'contain',

@@ -21,10 +21,15 @@ import { ProfileCard } from './components/ProfileCard';
 import { AuthStackNavigationType } from '../../utils/types/NavigationTypes';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import ContactAmericaScreen from '../ContactAmerica';
+import { useRoute, RouteProp } from '@react-navigation/native';
 
 export const BoardingSearching: React.FC = () => {
+
   const { profiles, loading, refreshProfiles } = useBoardingSearching();
   const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
+  const route = useRoute<RouteProp<AuthStackNavigationType, 'BoardingSearch'>>();
+  const serviceTitle = route.params?.service || 'Boarding';
+
 
   const handleProfilePress = (profileId: string) => {
     navigation.navigate('ProfileScreen', { profileId });
@@ -47,10 +52,10 @@ export const BoardingSearching: React.FC = () => {
             </TouchableOpacity>
                
              </View>
+<CustomText textStyle={styles.title} fontSize="S24" color={COLORS.TextPrimary}>
+  {serviceTitle}
+</CustomText>
 
-          <CustomText textStyle={styles.title} fontSize="S24" color={COLORS.TextPrimary}>
-            Boarding
-          </CustomText>
       </View>
 
       {/* Trust Banner */}
@@ -59,21 +64,20 @@ export const BoardingSearching: React.FC = () => {
           source={require('../../../assets/icons/VerifyIcon.png')}
           style={styles.verifyIcon}
         />
-       <View style={styles.trustTextContainer}>
-          <CustomText textType="BodyMediumRegular" color={COLORS.NeutralGrey100}>
-            We{' '}
-            <TouchableOpacity
-              style={styles.backgroundCheckButton}
-              onPress={() => console.log('Background check pressed')}
-              activeOpacity={0.7}
-            >
-              <CustomText textType="BodyMediumBold" color={COLORS.StaticBlue}>
-                background check
-              </CustomText>
-            </TouchableOpacity>
-            {' '}every sitter.
-          </CustomText>
-        </View>
+       <View style={styles.trustTextRow}>
+  <CustomText textType="BodyMediumRegular" color={COLORS.NeutralGrey100}>
+    We{' '}
+  </CustomText>
+  <TouchableOpacity onPress={() => console.log('Background check pressed')} activeOpacity={0.7}>
+    <CustomText textType="BodyMediumBold" color={COLORS.StaticBlue}>
+      background check
+    </CustomText>
+  </TouchableOpacity>
+  <CustomText textType="BodyMediumRegular" color={COLORS.NeutralGrey100}>
+    {' '}every sitter.
+  </CustomText>
+</View>
+
       </View>
 
       <ScrollView
@@ -135,6 +139,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.NeutralGrey0,
   },
+  trustTextRow: {
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+},
+
   header: {
     flexDirection: 'row',
     alignItems: 'center',

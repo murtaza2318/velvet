@@ -13,7 +13,7 @@ import { AuthStackNavigationType } from '../../utils/types/NavigationTypes';
 
 const { height } = Dimensions.get('window');
 
-const BoardingScreen = () => {
+const HouseSittingScreen = () => {
   const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
   const methods = useForm({
     defaultValues: {
@@ -25,7 +25,7 @@ const BoardingScreen = () => {
 
   const onSubmit = (data: any) => {
     console.log('Form Data:', data);
-    navigation.navigate('Searching', { service: 'Boarding' });
+    navigation.navigate('Searching', { service: 'House Sitting' });
   };
 
   return (
@@ -40,7 +40,6 @@ const BoardingScreen = () => {
               color={COLORS.TextPrimary}
             />
           </TouchableOpacity>
-          
         </View>
         <CustomText textType="BodyMediumRegular" color={COLORS.TextPrimary}>Skip</CustomText>
       </View>
@@ -48,7 +47,7 @@ const BoardingScreen = () => {
       <FormProvider {...methods}>
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           <CustomText textStyle={styles.title} fontSize="S24" color={COLORS.TextPrimary}>
-            Boarding
+            House Sitting
           </CustomText>
 
           <CustomText textType="BodyLargeSemiBold" color={COLORS.TextPrimary} style={styles.subtitle}>
@@ -76,7 +75,7 @@ const BoardingScreen = () => {
   );
 };
 
-export default BoardingScreen;
+export default HouseSittingScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -113,9 +112,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.StaticWhite,
     borderRadius: 12,
     padding: 16,
-    minHeight: height * 0.4, // 🚀 Increased card height
+    minHeight: height * 0.4,
     justifyContent: 'space-between',
-    ...SHADOW.medium, // applies your global shadow
+    ...SHADOW.medium,
   },
   footerNote: {
     marginTop: 20,

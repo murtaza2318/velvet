@@ -9,6 +9,9 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
   Platform,
+  TextInput,
+  Alert,
+  Modal,
 } from 'react-native';
 import Svg, { G, Path, Rect, Defs, ClipPath } from 'react-native-svg';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -48,7 +51,31 @@ const HomeIcon = () => (
 
 const ContactAmericaScreen = () => {
   const navigation = useNavigation();
+  
+  // State for all form fields
+  const [serviceDays, setServiceDays] = useState('5 Days');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [message, setMessage] = useState('');
+  const [specialInstructions, setSpecialInstructions] = useState('');
+  const [emergencyContact, setEmergencyContact] = useState('');
+  const [communicationMethod, setCommunicationMethod] = useState('');
+  
+  // Modal states
+  const [showDaysModal, setShowDaysModal] = useState(false);
+  const [showTimeModal, setShowTimeModal] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [showInstructionsModal, setShowInstructionsModal] = useState(false);
+  const [showEmergencyModal, setShowEmergencyModal] = useState(false);
+  const [showCommunicationModal, setShowCommunicationModal] = useState(false);
+  const [currentTimeField, setCurrentTimeField] = useState('');
+  
+  // Options for dropdowns
+  const daysOptions = ['1 Day', '2 Days', '3 Days', '4 Days', '5 Days', '6 Days', '7 Days', '1 Week', '2 Weeks'];
+  const timeOptions = ['Morning (8-12 PM)', 'Afternoon (12-6 PM)', 'Evening (6-10 PM)', 'Night (10 PM-8 AM)', 'All Day'];
+  const communicationOptions = ['Phone Call', 'Text Message', 'Email', 'Video Call'];
 
   const handleAddPet = () => {
     navigation.navigate('PetDetails' as never);
@@ -58,38 +85,125 @@ const ContactAmericaScreen = () => {
     navigation.goBack();
   };
 
+  const handleSendRequest = () => {
+    if (!phoneNumber || !message) {
+      Alert.alert('Missing Information', 'Please provide your phone number and message.');
+      return;
+    }
+    
+    Alert.alert('Request Sent', 'Your request has been sent to America C.!');
+  };
+
+  const handleTimeSelection = (time: string) => {
+    if (currentTimeField === 'start') {
+      setStartTime(time);
+    } else {
+      setEndTime(time);
+    }
+    setShowTimeModal(false);
+  };
+
+  const renderModal = (
+    visible: boolean,
+    onClose: () => void,
+    title: string,
+    options: string[],
+    onSelect: (option: string) => void
+  ) => (
+    <Modal visible={visible} transparent animationType="slide">
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalTitle}>{title}</Text>
+          <ScrollView style={styles.modalScroll}>
+            {options.map((option: string, index: number) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.modalOption}
+                onPress={() => {
+                  onSelect(option);
+                  onClose();
+                }}
+              >
+                <Text style={styles.modalOptionText}>{option}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+          <TouchableOpacity style={styles.modalCloseButton} onPress={onClose}>
+            <Text style={styles.modalCloseText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
+  );
+
+  const renderTextInputModal = (
+    visible: boolean,
+    onClose: () => void,
+    title: string,
+    value: string,
+    onChangeText: (text: string) => void,
+    placeholder: string
+  ) => (
+    <Modal visible={visible} transparent animationType="slide">
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalTitle}>{title}</Text>
+          <TextInput
+            style={styles.modalTextInput}
+            value={value}
+            onChangeText={onChangeText}
+            placeholder={placeholder}
+            multiline={title === 'Message' || title === 'Special Instructions'}
+            numberOfLines={title === 'Message' || title === 'Special Instructions' ? 4 : 1}
+          />
+          <View style={styles.modalButtonRow}>
+            <TouchableOpacity style={styles.modalSaveButton} onPress={onClose}>
+              <Text style={styles.modalSaveText}>Save</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.modalCloseButton} onPress={onClose}>
+              <Text style={styles.modalCloseText}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : hp('2%')}
+        style={styles.keyboardAvoidingView}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
       >
         <View style={styles.container}>
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-            <View style={styles.formContent}>
-              {/* Header */}
-              <View style={styles.headerShadow} />
-              <View style={styles.header}>
-                <TouchableOpacity style={styles.arrowLeft} onPress={handleGoBack}>
-                  <CustomIcon
-                    icon="arrow-left"
-                    type="Feather"
-                    size={RFValue(20)}
-                    color={COLORS.TextPrimary}
-                  />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Contact America C.</Text>
-                <TouchableOpacity style={styles.arrowRight}>
-                  <CustomIcon
-                    icon="arrow-right"
-                    type="Feather"
-                    size={RFValue(20)}
-                    color={COLORS.TextPrimary}
-                  />
-                </TouchableOpacity>
-              </View>
+          {/* Fixed Header */}
+          <View style={styles.headerContainer}>
+            <View style={styles.headerShadow} />
+            <View style={styles.header}>
+              <TouchableOpacity style={styles.arrowLeft} onPress={handleGoBack}>
+                <CustomIcon
+                  icon="arrow-left"
+                  type="Feather"
+                  size={RFValue(20)}
+                  color={COLORS.TextPrimary}
+                />
+              </TouchableOpacity>
+              <Text style={styles.headerTitle}>Contact America C.</Text>
+              <TouchableOpacity style={styles.arrowRight}>
+                <CustomIcon
+                  icon="arrow-right"
+                  type="Feather"
+                  size={RFValue(20)}
+                  color={COLORS.TextPrimary}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
 
+          {/* Scrollable Content */}
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+            <View style={styles.contentContainer}>
               {/* Service Section */}
               <Text style={styles.sectionLabel}>Service</Text>
               <View style={styles.serviceRow}>
@@ -108,29 +222,53 @@ const ContactAmericaScreen = () => {
               </View>
 
               {/* Service Dates Row */}
-              <View style={styles.rowBox}>
+              <TouchableOpacity style={styles.rowBox} onPress={() => setShowDaysModal(true)}>
                 <Text style={styles.rowLabel}>Service dates</Text>
-                <Text style={styles.rowValue}>5 Days</Text>
-              </View>
-              <View style={styles.rowBox}>
+                <Text style={styles.rowValue}>{serviceDays}</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                style={styles.rowBox} 
+                onPress={() => {
+                  setCurrentTimeField('start');
+                  setShowTimeModal(true);
+                }}
+              >
                 <Text style={styles.rowLabel}>Start range</Text>
-                <Text style={styles.rowValueLink}>Add times</Text>
-              </View>
-              <View style={styles.rowBox}>
+                <Text style={[styles.rowValueLink, startTime && styles.rowValue]}>
+                  {startTime || 'Add times'}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                style={styles.rowBox} 
+                onPress={() => {
+                  setCurrentTimeField('end');
+                  setShowTimeModal(true);
+                }}
+              >
                 <Text style={styles.rowLabel}>End range</Text>
-                <Text style={styles.rowValueLink}>Add times</Text>
-              </View>
+                <Text style={[styles.rowValueLink, endTime && styles.rowValue]}>
+                  {endTime || 'Add times'}
+                </Text>
+              </TouchableOpacity>
+
               <TouchableOpacity style={styles.rowBox} onPress={handleAddPet}>
                 <Text style={styles.rowLabel}>Pet</Text>
                 <Text style={styles.rowValueLink}>Add a Pet</Text>
               </TouchableOpacity>
+
               <View style={styles.rowBox}>
                 <Text style={styles.rowLabel}>Contact</Text>
               </View>
-              <View style={styles.rowBox}>
+
+              <TouchableOpacity style={styles.rowBox} onPress={() => setShowPhoneModal(true)}>
                 <Text style={styles.rowLabel}>Phone number</Text>
-                <Text style={styles.rowValueLink}>Tap to add</Text>
-              </View>
+                <Text style={[styles.rowValueLink, phoneNumber && styles.rowValue]}>
+                  {phoneNumber || 'Tap to add'}
+                </Text>
+              </TouchableOpacity>
+
               <View style={styles.rowBox}>
                 <Text style={styles.rowLabel}>Text me when America C. replies</Text>
                 <Switch
@@ -141,22 +279,62 @@ const ContactAmericaScreen = () => {
                   style={styles.switch}
                 />
               </View>
+
               <View style={styles.rowBox}>
                 <Text style={styles.rowLabel}>Message</Text>
               </View>
-              <View style={styles.messageBox}>
-                <Text style={styles.messageHint}>Tell America C. a little about your request...</Text>
+
+              <TouchableOpacity style={styles.messageBox} onPress={() => setShowInstructionsModal(true)}>
+                <Text style={[styles.messageHint, message && styles.messageText]}>
+                  {message || 'Tell America C. a little about your request...'}
+                </Text>
+              </TouchableOpacity>
+
+              {/* Additional Information Section */}
+              <View style={styles.extraContentBox}>
+                <Text style={styles.extraContentText}>Additional Information</Text>
               </View>
+
+              <TouchableOpacity style={styles.rowBox} onPress={() => setShowInstructionsModal(true)}>
+                <Text style={styles.rowLabel}>Special instructions</Text>
+                <Text style={[styles.rowValueLink, specialInstructions && styles.rowValue]}>
+                  {specialInstructions || 'Add notes'}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.rowBox} onPress={() => setShowEmergencyModal(true)}>
+                <Text style={styles.rowLabel}>Emergency contact</Text>
+                <Text style={[styles.rowValueLink, emergencyContact && styles.rowValue]}>
+                  {emergencyContact || 'Add contact'}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.rowBox} onPress={() => setShowCommunicationModal(true)}>
+                <Text style={styles.rowLabel}>Preferred communication</Text>
+                <Text style={[styles.rowValueLink, communicationMethod && styles.rowValue]}>
+                  {communicationMethod || 'Select method'}
+                </Text>
+              </TouchableOpacity>
             </View>
           </ScrollView>
 
-          {/* Send Request Button fixed at the bottom */}
+          {/* Fixed Send Request Button */}
           <View style={styles.sendButtonWrapper}>
-            <TouchableOpacity style={styles.sendButton}>
+            <TouchableOpacity style={styles.sendButton} onPress={handleSendRequest}>
               <Text style={styles.sendButtonText}>Send Request</Text>
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* Modals */}
+        {renderModal(showDaysModal, () => setShowDaysModal(false), 'Select Service Duration', daysOptions, setServiceDays)}
+        {renderModal(showTimeModal, () => setShowTimeModal(false), 'Select Time Range', timeOptions, handleTimeSelection)}
+        {renderModal(showCommunicationModal, () => setShowCommunicationModal(false), 'Select Communication Method', communicationOptions, setCommunicationMethod)}
+        
+        {renderTextInputModal(showPhoneModal, () => setShowPhoneModal(false), 'Phone Number', phoneNumber, setPhoneNumber, 'Enter your phone number')}
+        {renderTextInputModal(showInstructionsModal, () => setShowInstructionsModal(false), 'Message', message, setMessage, 'Tell America C. about your request...')}
+        {renderTextInputModal(showEmergencyModal, () => setShowEmergencyModal(false), 'Emergency Contact', emergencyContact, setEmergencyContact, 'Enter emergency contact details')}
+
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -167,16 +345,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.StaticWhite,
   },
+  keyboardAvoidingView: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: COLORS.StaticWhite,
+  },
+  headerContainer: {
+    position: 'relative',
+    zIndex: 10,
   },
   headerShadow: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
-    height: hp('16%'),
+    height: hp('12%'),
     backgroundColor: COLORS.StaticWhite,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
@@ -190,10 +375,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: wp('5%'),
-    paddingTop: hp('6%'),
+    paddingTop: hp('2%'),
+    paddingBottom: hp('1%'),
     height: hp('12%'),
+    backgroundColor: COLORS.StaticWhite,
     zIndex: 2,
-    width: '100%',
   },
   arrowLeft: {
     width: wp('6%'),
@@ -213,21 +399,22 @@ const styles = StyleSheet.create({
     color: COLORS.TextPrimary,
     textAlign: 'center',
   },
+  contentContainer: {
+    paddingHorizontal: wp('5%'),
+    paddingTop: hp('2%'),
+    paddingBottom: hp('10%'), // Add padding for fixed button
+  },
   sectionLabel: {
-    position: 'absolute',
-    top: hp('13%'),
-    left: wp('5%'),
     fontFamily: FONT_POPPINS.regularFont,
     fontSize: RFValue(14),
     color: COLORS.TextPrimary,
+    marginBottom: hp('1%'),
   },
   serviceRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: hp('2%'),
-    paddingHorizontal: wp('5%'),
-    width: '100%',
+    marginBottom: hp('2%'),
   },
   serviceTitle: {
     fontFamily: FONT_POPPINS.mediumFont,
@@ -250,7 +437,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.StaticWhite,
   },
   sectionBox: {
-    marginTop: hp('2%'),
     backgroundColor: 'rgba(169, 165, 159, 0.1)',
     borderColor: 'rgba(216, 216, 216, 0.76)',
     borderWidth: 1,
@@ -258,8 +444,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: wp('5%'),
     borderRadius: RFValue(5),
-    width: '100%',
-    alignSelf: 'center',
+    marginBottom: hp('1%'),
   },
   sectionTitle: {
     fontFamily: FONT_POPPINS.semiBoldFont,
@@ -274,16 +459,15 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(216, 216, 216, 0.76)',
     borderWidth: 1,
     height: hp('5%'),
-    marginTop: hp('0.7%'),
+    marginBottom: hp('1%'),
     paddingHorizontal: wp('5%'),
     borderRadius: RFValue(5),
-    width: '100%',
-    alignSelf: 'center',
   },
   rowLabel: {
     fontFamily: FONT_POPPINS.mediumFont,
     fontSize: RFValue(12),
     color: COLORS.TextPrimary,
+    flex: 1,
   },
   rowValue: {
     fontFamily: FONT_POPPINS.regularFont,
@@ -294,7 +478,6 @@ const styles = StyleSheet.create({
     fontFamily: FONT_POPPINS.regularFont,
     fontSize: RFValue(12),
     color: COLORS.TextPrimary,
-    textAlign: 'right',
     textDecorationLine: 'underline',
   },
   switch: {
@@ -305,21 +488,49 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(216, 216, 216, 0.76)',
     borderWidth: 1,
     height: hp('5%'),
-    marginTop: hp('0.7%'),
     paddingHorizontal: wp('5%'),
     borderRadius: RFValue(5),
     justifyContent: 'center',
-    width: '100%',
-    alignSelf: 'center',
+    marginBottom: hp('2%'),
   },
   messageHint: {
     fontFamily: FONT_POPPINS.mediumFont,
     fontSize: RFValue(12),
     color: COLORS.TextPrimary,
+    opacity: 0.7,
+  },
+  messageText: {
+    opacity: 1,
+  },
+  extraContentBox: {
+    backgroundColor: 'rgba(169, 165, 159, 0.1)',
+    borderColor: 'rgba(216, 216, 216, 0.76)',
+    borderWidth: 1,
+    height: hp('5%'),
+    justifyContent: 'center',
+    paddingHorizontal: wp('5%'),
+    borderRadius: RFValue(5),
+    marginBottom: hp('1%'),
+  },
+  extraContentText: {
+    fontFamily: FONT_POPPINS.semiBoldFont,
+    fontSize: RFValue(14),
+    color: COLORS.TextPrimary,
+  },
+  sendButtonWrapper: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: COLORS.StaticWhite,
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('5%'),
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(216, 216, 216, 0.3)',
+    zIndex: 10,
   },
   sendButton: {
-    alignSelf: 'center',
-    width: wp('80%'),
+    width: '100%',
     height: hp('6%'),
     backgroundColor: '#8F9E73',
     borderColor: '#A9A59F',
@@ -334,19 +545,82 @@ const styles = StyleSheet.create({
     color: COLORS.StaticWhite,
     textAlign: 'center',
   },
-  sendButtonWrapper: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: hp('2%'),
-    backgroundColor: 'transparent',
-    paddingHorizontal: wp('4%'),
-    zIndex: 10,
-  },
-  formContent: {
+  // Modal Styles
+  modalOverlay: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: COLORS.StaticWhite,
+    borderRadius: RFValue(10),
+    padding: wp('5%'),
+    width: wp('80%'),
+    maxHeight: hp('60%'),
+  },
+  modalTitle: {
+    fontFamily: FONT_POPPINS.semiBoldFont,
+    fontSize: RFValue(16),
+    color: COLORS.TextPrimary,
+    marginBottom: hp('2%'),
+    textAlign: 'center',
+  },
+  modalScroll: {
+    maxHeight: hp('40%'),
+  },
+  modalOption: {
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('3%'),
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(216, 216, 216, 0.3)',
+  },
+  modalOptionText: {
+    fontFamily: FONT_POPPINS.regularFont,
+    fontSize: RFValue(14),
+    color: COLORS.TextPrimary,
+  },
+  modalTextInput: {
+    borderWidth: 1,
+    borderColor: 'rgba(216, 216, 216, 0.76)',
+    borderRadius: RFValue(5),
+    padding: wp('3%'),
+    fontFamily: FONT_POPPINS.regularFont,
+    fontSize: RFValue(14),
+    color: COLORS.TextPrimary,
+    marginBottom: hp('2%'),
+    textAlignVertical: 'top',
+  },
+  modalButtonRow: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    minHeight: '100%',
+    marginTop: hp('1%'),
+  },
+  modalSaveButton: {
+    backgroundColor: '#8F9E73',
+    paddingVertical: hp('1%'),
+    paddingHorizontal: wp('5%'),
+    borderRadius: RFValue(5),
+    flex: 0.45,
+  },
+  modalSaveText: {
+    fontFamily: FONT_POPPINS.semiBoldFont,
+    fontSize: RFValue(14),
+    color: COLORS.StaticWhite,
+    textAlign: 'center',
+  },
+  modalCloseButton: {
+    backgroundColor: 'rgba(216, 216, 216, 0.3)',
+    paddingVertical: hp('1%'),
+    paddingHorizontal: wp('5%'),
+    borderRadius: RFValue(5),
+    flex: 0.45,
+  },
+  modalCloseText: {
+    fontFamily: FONT_POPPINS.semiBoldFont,
+    fontSize: RFValue(14),
+    color: COLORS.TextPrimary,
+    textAlign: 'center',
   },
 });
 

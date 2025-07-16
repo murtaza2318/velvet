@@ -1,52 +1,56 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Platform, StatusBar, ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { CustomIcon } from '../../components/CustomIcon';
 
 const InviteFriendScreen = () => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn}>
-          <Text style={styles.backArrow}>{'<'}</Text>
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+          <CustomIcon icon="arrow-left" type="Feather" size={24} color="#222" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Invite a friend</Text>
       </View>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.card}>
+          <Text style={styles.title}>Send & earn a $20 referral credit</Text>
+          <Text style={styles.subtitle}>
+            Invite your friends and family to book a pet sitter on Velvet Leash and you'll both receive $20 in Velvet Credit. There are 2 ways to share.
+          </Text>
 
-      <View style={styles.card}>
-        <Text style={styles.title}>Send & earn a $20 referral credit</Text>
-        <Text style={styles.subtitle}>
-          Invite your friends and family to book a pet sitter on Velvet Leash and you'll both receive $20 in Velvet Credit. There are 2 ways to share.
-        </Text>
-
-        <Text style={styles.sectionTitle}>Scan your QR Code in Person</Text>
-        <View style={styles.qrCentered}>
-          <View style={styles.qrBox}>
-            <Text style={styles.qrText}>QR Code here</Text>
+          <Text style={styles.sectionTitle}>Scan your QR Code in Person</Text>
+          <View style={styles.qrCentered}>
+            <View style={styles.qrBox}>
+              <Text style={styles.qrText}>QR Code here</Text>
+            </View>
+            <MaterialCommunityIcons name="chevron-down" size={32} color="#b3b3b3" style={{ marginTop: 8 }} />
           </View>
-          <MaterialCommunityIcons name="chevron-down" size={32} color="#b3b3b3" style={{ marginTop: 8 }} />
-        </View>
 
-        <Text style={styles.sectionTitle}>Send your referral link</Text>
-        <View style={styles.linkRow}>
-          <View style={styles.pawCircle}>
-            <MaterialCommunityIcons name="paw" size={28} color="#b3b3b3" />
+          <Text style={styles.sectionTitle}>Send your referral link</Text>
+          <View style={styles.linkRow}>
+            <View style={styles.pawCircle}>
+              <MaterialCommunityIcons name="paw" size={28} color="#b3b3b3" />
+            </View>
+            <Text style={styles.linkText}>Link here</Text>
+            <MaterialCommunityIcons name="content-copy" size={24} color="#b3b3b3" style={{ marginLeft: 8 }} />
           </View>
-          <Text style={styles.linkText}>Link here</Text>
-          <MaterialCommunityIcons name="content-copy" size={24} color="#b3b3b3" style={{ marginLeft: 8 }} />
+
+          <TouchableOpacity style={styles.sendBtn}>
+            <Text style={styles.sendBtnText}>Send referral</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.note}>
+            Your promo code is only for new Velvet members you recruit through your referral link. Rules and restrictions apply—read our Terms of Service to learn more.
+          </Text>
         </View>
-
-        <TouchableOpacity style={styles.sendBtn}>
-          <Text style={styles.sendBtnText}>Send referral</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.note}>
-          Your promo code is only for new Velvet members you recruit through your referral link. Rules and restrictions apply—read our Terms of Service to learn more.
-        </Text>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -61,6 +65,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: wp('4%'),
     marginBottom: hp('2%'),
+    backgroundColor: '#fff',
+    // iOS shadow
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    // Android shadow
+    elevation: 6,
+    zIndex: 10,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   backBtn: {
     marginRight: 8,
@@ -72,7 +86,8 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   headerTitle: {
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom:10,
     fontFamily: 'Pacifico-Regular',
     fontSize: RFValue(32),
     color: '#222',
@@ -110,8 +125,8 @@ const styles = StyleSheet.create({
     fontSize: RFValue(16),
     color: '#222',
     fontWeight: '700',
-    marginTop: 10,
-    marginBottom: 8,
+    marginTop: 5,
+    marginBottom: 30,
   },
   qrCentered: {
     alignItems: 'center',
@@ -154,12 +169,12 @@ const styles = StyleSheet.create({
   sendBtn: {
     backgroundColor: '#8F9E73',
     borderRadius: 30,
-    paddingVertical: 14,
+    paddingVertical: 8,
     alignItems: 'center',
     marginBottom: 10,
   },
   sendBtnText: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins-SemiBold',
     fontSize: RFValue(18),
     color: '#fff',
   },

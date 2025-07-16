@@ -15,6 +15,8 @@ import { CustomText } from '../../components/CustomText';
 import { CustomIcon } from '../../components/CustomIcon';
 import { COLORS } from '../../utils/theme';
 import useSettings from './hooks/useSettings';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { AuthStackNavigationType } from '../../utils/types/NavigationTypes';
 
 interface SettingItemProps {
   title: string;
@@ -27,6 +29,7 @@ interface SectionHeaderProps {
 
 const SettingsScreen: React.FC = () => {
   const { handleSectionPress, handleBackPress } = useSettings();
+  const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
 
   const SettingItem: React.FC<SettingItemProps> = ({ title, onPress }) => (
     <TouchableOpacity
@@ -68,7 +71,7 @@ const SettingsScreen: React.FC = () => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={handleBackPress}
+          onPress={() => navigation.goBack()}
           activeOpacity={0.7}>
           <CustomIcon
             icon="arrow-back"
@@ -90,7 +93,7 @@ const SettingsScreen: React.FC = () => {
 
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         {/* Tabs Row for General/Notifications */}
-        <View style={styles.tabsRow}>
+        {/* <View style={styles.tabsRow}>
           <View style={[styles.tab, styles.tabActive]}>
             <CustomText textType="BodyMediumSemiBold" color={COLORS.TextPrimary} textStyle={styles.tabTextActive}>
               General
@@ -101,7 +104,14 @@ const SettingsScreen: React.FC = () => {
               Notifications
             </CustomText>
           </TouchableOpacity>
-        </View>
+        </View> */}
+         <CustomText 
+              textType="H6SemiBold" 
+              color={COLORS.TextPrimary} 
+              textStyle={styles.sectionTitle}
+            >
+              General
+            </CustomText>
 
         {/* General Section */}
         <SettingItem title="Account Settings" onPress={() => handleSectionPress('account')} />
@@ -136,6 +146,8 @@ const styles = StyleSheet.create({
   },
   backButton: {
     padding: wp(1),
+
+    
   },
   headerCenter: {
     flex: 1,
@@ -146,6 +158,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontFamily: 'Poppins-SemiBold',
+    marginTop: hp('3%'),
   },
   scrollContainer: {
     flex: 1,
@@ -157,6 +170,13 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontFamily: 'Poppins-SemiBold',
+  },
+    sectionTitle: {
+    fontSize: RFValue(16), 
+    fontWeight: '600',
+    marginBottom: hp('1.5%'), 
+    marginTop: hp('2%'),
+    marginLeft: wp('4%'),
   },
   settingItem: {
     backgroundColor: COLORS.StaticWhite,

@@ -26,7 +26,15 @@ import VelvetSupportScreen from '../screens/VelvetSupport/VelvetSupportScreen';
 import InviteFriendScreen from '../screens/InviteFriend/InviteFriendScreen';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
-import ForgetPassword from '../screens/ForgetPassword/ForgetPassword'
+import ForgetPassword from '../screens/ForgetPassword/ForgetPassword';
+import HouseSitting from '../screens/HouseSitting/HouseSitting';
+import DropinVisits from '../screens/DropinVisits/DropinVisits';
+import DogWalking from '../screens/DogWalking/DogWalking';
+import DoggyDayCare from '../screens/DoggyDayCare/DoggyDayCare';
+import PaymentScreen from '../screens/PaymentScreen/PaymentScreen';
+
+import PromoGiftCodesScreen from './../screens/PromoGiftCodes/PromoGiftCodesScreen';
+
 const Stack = createNativeStackNavigator();
 
  const AuthStack = () => {
@@ -60,6 +68,12 @@ const Stack = createNativeStackNavigator();
             <Stack.Screen name={'ProfileScreen'} component={ProfileScreen} />
             <Stack.Screen name={'LoginScreen'} component={LoginScreen} />
             <Stack.Screen name={'ForgetPassword'} component={ForgetPassword} />
+            <Stack.Screen name={'HouseSitting'} component={HouseSitting} />
+            <Stack.Screen name={'DropinVisits'} component={DropinVisits} />
+            <Stack.Screen name={'DogWalking'} component={DogWalking} />
+            <Stack.Screen name={'DoggyDayCare'} component={DoggyDayCare} />
+            <Stack.Screen name={'PaymentScreen'} component={PaymentScreen} />
+            <Stack.Screen name={'PromoGiftCodesScreen'} component={PromoGiftCodesScreen} />
         </Stack.Navigator>
     )
 }

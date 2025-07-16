@@ -17,11 +17,11 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { useSignup } from './hooks/useSignup';
+import { useSignup } from '../SignUp/hooks/useSignup';
 import { COLORS, FONT_POPPINS } from '../../utils/theme';
 import CustomRHFTextInput from '../../components/CustomRHFTextInput';
 import { CustomText } from '../../components/CustomText';
-import SocialSignupButton from './components/SocialSignupButton';
+import SocialSignupButton from '../SignUp/components/SocialSignupButton';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { AuthStackNavigationType } from '../../utils/types/NavigationTypes';
 

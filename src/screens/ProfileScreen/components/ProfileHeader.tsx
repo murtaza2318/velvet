@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
   },
   coverImage: {
     width: '100%',
-    height: 120,
+    height: 180,
     resizeMode: 'cover',
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
   },
   avatarWrapper: {
     position: 'absolute',
-    top: 80,
+    top: 145,
     left: 20,
     zIndex: 2,
     borderRadius: 40,

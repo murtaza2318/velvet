@@ -1,48 +1,51 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Platform, StatusBar, ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
+import { CustomIcon } from '../../components/CustomIcon';
 
 const VelvetSupportScreen = () => {
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
-          <Text style={styles.backArrow}>{'<'}</Text>
+          <CustomIcon icon="arrow-left" type="Feather" size={24} color="#222" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Velvet Support</Text>
       </View>
-      {/* Main Content */}
-      <View style={styles.card}>
-        <View style={styles.row}>
-          <Text style={styles.iconCircle}>?</Text>
-          <Text style={styles.cardTitle}>How can we help?</Text>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        {/* Main Content */}
+        <View style={styles.card}>
+          <View style={styles.row}>
+            <Text style={styles.iconCircle}>?</Text>
+            <Text style={styles.cardTitle}>How can we help?</Text>
+          </View>
+          <Text style={styles.cardSubtitle}>Find answers to your questions and resources for common concerns.</Text>
+          <TouchableOpacity style={styles.filledBtn}>
+            <Text style={styles.filledBtnText}>Visit the Help Center</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.outlineBtn}>
+            <Text style={styles.outlineBtnText}>Chat with Velvet Support</Text>
+          </TouchableOpacity>
         </View>
-        <Text style={styles.cardSubtitle}>Find answers to your questions and resources for common concerns.</Text>
-        <TouchableOpacity style={styles.filledBtn}>
-          <Text style={styles.filledBtnText}>Visit the Help Center</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.outlineBtn}>
-          <Text style={styles.outlineBtnText}>Chat with Velvet Support</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.card}>
-        <View style={styles.row}>
-          <Text style={styles.iconCircle}>?</Text>
-          <Text style={styles.cardTitle}>Is this a safety issue?</Text>
+        <View style={styles.card}>
+          <View style={styles.row}>
+            <Text style={styles.iconCircle}>?</Text>
+            <Text style={styles.cardTitle}>Is this a safety issue?</Text>
+          </View>
+          <Text style={styles.cardSubtitle}>If you're experiencing a safety issue?</Text>
+          <Text style={styles.cardSubtitle2}>
+            concerning the well-being of a person or a pet in your care —including a lost pet, pet injury or pet illness— please contact the Trust & Safety team.
+          </Text>
+          <TouchableOpacity style={styles.filledBtn}>
+            <Text style={styles.filledBtnText}>Call Velvet Support</Text>
+          </TouchableOpacity>
         </View>
-        <Text style={styles.cardSubtitle}>If you're experiencing a safety issue?</Text>
-        <Text style={styles.cardSubtitle2}>
-          concerning the well-being of a person or a pet in your care —including a lost pet, pet injury or pet illness— please contact the Trust & Safety team.
-        </Text>
-        <TouchableOpacity style={styles.filledBtn}>
-          <Text style={styles.filledBtnText}>Call Velvet Support</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -57,6 +60,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: wp('4%'),
     marginBottom: hp('2%'),
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 6,
+    zIndex: 10,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   backBtn: {
     marginRight: 8,
@@ -69,6 +80,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     marginTop: 10,
+    marginBottom:10,
     fontFamily: 'Pacifico-Regular',
     fontSize: RFValue(32),
     color: '#222',
@@ -151,8 +163,8 @@ const styles = StyleSheet.create({
   outlineBtnText: {
     fontFamily: 'Poppins-Bold',
     fontSize: RFValue(12.5),
-    color: '#8F9E73',
+    color: '#404348',
   },
 });
 
-export default VelvetSupportScreen; 
+export default VelvetSupportScreen;

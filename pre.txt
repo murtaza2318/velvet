@@ -1,0 +1,2 @@
+npx expo install @expo-google-fonts/pacifico expo-font expo-app-loading
+npx expo install @expo-google-fonts/poppins expo-font expo-app-loading

@@ -20,7 +20,7 @@ import { COLORS } from '../../utils/theme';
 import { FONT_POPPINS } from '../../utils/theme';
 import CustomRHFTextInput from '../../components/CustomRHFTextInput';
 import { CustomText } from '../../components/CustomText';
-import SocialSignupButton from './components/SocialSignupButton';
+import SocialSignupButton from '../Login/components/SocialSignupButton';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { AuthStackNavigationType } from '../../utils/types/NavigationTypes';
 

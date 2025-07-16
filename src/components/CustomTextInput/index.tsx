@@ -245,8 +245,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.NeutralGrey20,
     paddingHorizontal: RFValue(12),
-    height: RFValue(42),
-    borderRadius: RFValue(6),
+    height: RFValue(35),
+    borderRadius: 15, // changed from RFValue(6) to 12 for more rounded corners
   },
   inputText: {
     paddingHorizontal: RFValue(10),

@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   heroimage: {
     position: 'absolute',
-    bottom: hp('1%'),
+    bottom: hp('0%'),
     width: wp('100%'),
     height: hp('50%'),
     resizeMode: 'contain',

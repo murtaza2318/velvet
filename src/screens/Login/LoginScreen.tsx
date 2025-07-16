@@ -1,136 +1,227 @@
 import React from 'react';
+import { Ionicons } from '@expo/vector-icons'; // for Expo
 import {
   View,
-  StyleSheet,
   Text,
+  ScrollView,
+  Platform,
+  KeyboardAvoidingView,
+  StyleSheet,
   TouchableOpacity,
-  TextInput,
+  SafeAreaView,
+  Image,
+  Dimensions,
 } from 'react-native';
-import SocialSignupButton from '../SignUp/components/SocialSignupButton';
-import { COLORS } from '../../utils/theme';
-import { useSignup } from '../SignUp/hooks/useSignup';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import {
-  AuthStackNavigationType,
-} from '../../utils/types/NavigationTypes';
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+import { useSignup } from './hooks/useSignup';
+import { COLORS, FONT_POPPINS } from '../../utils/theme';
+import CustomRHFTextInput from '../../components/CustomRHFTextInput';
+import { CustomText } from '../../components/CustomText';
+import SocialSignupButton from './components/SocialSignupButton';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { AuthStackNavigationType } from '../../utils/types/NavigationTypes';
 
-const LoginScreen: React.FC = () => {
+const { width } = Dimensions.get('window');
+
+const SignupScreen: React.FC = () => {
   const {
+    control,
+    handleSubmit,
+    handleSignup,
+    isLoading,
+    validationRules,
     handleFacebookSignup,
     handleGoogleSignup,
     handleAppleSignup,
-    isLoading,
   } = useSignup();
 
-  // ✅ Fix: initialize navigation
   const navigation = useNavigation<NavigationProp<AuthStackNavigationType>>();
 
+  const onSubmit = (data: any) => {
+    console.log('Form Data Submitted: ', data);
+    navigation.navigate('Boarding');
+  };
+
   return (
-    <View style={styles.container}>
-      <SocialSignupButton
-        type="apple"
-        onPress={handleAppleSignup}
-        text="Continue with Apple"
-        textColor={COLORS.NeutralGrey0}
-        iconColor={COLORS.NeutralGrey0}
-      />
-
-      <SocialSignupButton
-        type="facebook"
-        onPress={handleFacebookSignup}
-        text="Continue with Facebook"
-        textColor={COLORS.TextPrimary}
-        iconColor={COLORS.TextPrimary}
-      />
-
-      <SocialSignupButton
-        type="google"
-        onPress={handleGoogleSignup}
-        text="Continue with Google"
-        textColor={COLORS.StaticWhite}
-        iconColor={COLORS.StaticWhite}
-      />
-
-      <Text style={styles.text}>or sign in with email</Text>
-
-      <View style={styles.container2}>
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder=""
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-
-        <Text style={styles.label}>Password</Text>
-        <TextInput style={styles.input} placeholder="" secureTextEntry />
-
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('ForgetPassword');
-          }}
-          activeOpacity={0.7}
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
         >
-          <Text style={styles.forgotText}>Forgot your password?</Text>
-        </TouchableOpacity>
+          <View style={styles.header}>
+           <TouchableOpacity onPress={() => navigation.goBack()}>
+  <Ionicons name="arrow-back" size={28} color="#000000" style={styles.backButton} />
+</TouchableOpacity>
 
-        <Text style={styles.termsText}>
-          By signing in or signing up, I agree to the Velvet{' '}
-          <Text style={styles.link}>Terms of Service</Text> and{' '}
-          <Text style={styles.link}>Privacy Statement</Text>, consent to
-          receive marketing email and messages from Velvet and its affiliates
-          and confirm that I am 18 years of age or older.
-        </Text>
+          </View>
 
-        <TouchableOpacity style={styles.signInButton}>
-          <Text style={styles.signInButtonText}>Sign in</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+          <View style={styles.socialButtonsSection}>
+            <SocialSignupButton type="apple" onPress={handleAppleSignup} />
+            <SocialSignupButton type="facebook" onPress={handleFacebookSignup} />
+            <SocialSignupButton type="google" onPress={handleGoogleSignup} />
+          </View>
+
+          <CustomText
+            textType="BodyLargeSemiBold"
+            color={COLORS.TextPrimary}
+            center
+            textStyle={styles.orText}
+          >
+            or sign up with email
+          </CustomText>
+
+          <View style={styles.formContainer}>
+            <CustomRHFTextInput
+              control={control}
+              name="email"
+              rules={validationRules.email}
+              title="Email"
+              placeholder=""
+              type="standard"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              titleTextStyle={styles.fieldTitle}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
+            />
+            <CustomRHFTextInput
+              control={control}
+              name="password"
+              rules={validationRules.password}
+              title="Password"
+              placeholder=""
+              type="standard"
+              secureTextEntry
+              autoCapitalize="none"
+              titleTextStyle={styles.fieldTitle}
+              containerStyle={[styles.fieldSpacing, styles.roundedInput]}
+            />
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ForgetPassword')}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.forgotText}>Forgot your password?</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.termsText}>
+              By signing in or signing up, I agree to the Velvet{' '}
+              <Text style={styles.link}>Terms of Service</Text> and{' '}
+              <Text style={styles.link}>Privacy Statement</Text>, consent to receive marketing
+              email and messages from Velvet and its affiliates and confirm that I am 18 years of
+              age or older.
+            </Text>
+
+            <TouchableOpacity style={styles.signInButton} onPress={handleSubmit(onSubmit)}>
+              <Text style={styles.signInButtonText}>Sign in</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    marginTop: 65,
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    paddingTop: 20,
   },
-  container2: {
-    marginTop: 40,
+  scrollContent: {
+    alignItems: 'center',
+    width: '100%',
+    paddingBottom: hp(10),
   },
-  label: {
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: hp(4),
+    paddingBottom: hp(2),
+    height: hp(10),
+    width: '100%',
+  },
+  logoContainer: {
+    alignItems: 'flex-start',
+    flex: 1,
+    marginLeft: -15,
+    paddingLeft: 0,
+  },
+  backButton: {
+    width: wp('10%'),
+    height: wp('10%'),
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginLeft: wp('5%'),
+  },
+  logo: {
+    width: width * 0.2,
+    height: width * 0.2,
+    resizeMode: 'contain',
+    alignSelf: 'flex-start',
+    marginLeft: 0,
+    paddingLeft: 0,
+  },
+  socialButtonsSection: {
+    width: '100%',
+    marginTop: hp(2),
+    marginBottom: hp(2),
+    alignItems: 'center',
+  },
+  orText: {
+    marginTop: -10,
+    fontSize: 16,
     fontWeight: 'bold',
-    fontSize: 21,
-    margin: 4,
-    paddingBottom: 4,
+    fontFamily: FONT_POPPINS.semiBoldFont,
   },
-  text: {
-    textAlign: 'center',
-    fontSize: 18,
-    fontFamily: 'Poppins',
-    fontWeight: 'bold',
-    marginVertical: 6,
+  formContainer: {
+    width: '90%',
+    marginTop: hp(8),
+    marginBottom: hp(2),
   },
-  input: {
+  fieldTitle: {
+    fontSize: RFValue(14),
+    marginTop: 2,
+    marginBottom: -2,
+    color: 'black',
+    fontFamily: FONT_POPPINS.semiBoldFont,
+  },
+  fieldSpacing: {
+    borderRadius: 40,
+    marginTop: hp(0.5),
+  },
+  roundedInput: {
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 6,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginBottom: 16,
+    borderColor: COLORS.NeutralGrey20,
+    overflow: 'hidden',
   },
   forgotText: {
     color: '#7D7D7D',
     textAlign: 'center',
     marginBottom: 20,
     fontSize: 15,
+    marginTop: 20,
   },
   termsText: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#7D7D7D',
     textAlign: 'center',
     marginBottom: 20,
-    lineHeight: 28,
+    lineHeight: 20,
+    width: '90%',
+    alignSelf: 'center',
   },
   link: {
     textDecorationLine: 'underline',
@@ -141,7 +232,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 25,
     alignItems: 'center',
-    width: '100%',
+    width: '90%',
     alignSelf: 'center',
   },
   signInButtonText: {
@@ -151,4 +242,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SignupScreen;

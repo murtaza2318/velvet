@@ -88,9 +88,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 40,
     borderRadius: 28,
-    marginVertical: 3,
+    marginVertical: 6,
     paddingHorizontal: 30,
-    width: '100%',
+    width: '90%',
     alignSelf: 'center',
   },
   appleButton: {

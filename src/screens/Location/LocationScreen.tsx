@@ -33,19 +33,26 @@ const LocationScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image
+      {/* <Image
         source={require('../../../assets/images/Vector.png')}
         style={styles.vectorBackground}
-      />
+      /> */}
 
       <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
         <Text style={styles.cancelButtonText}>Cancel</Text>
       </TouchableOpacity>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled"
+        >
           <Image
-            source={require('../../../assets/images/globe_illustration.png')}
+            source={require('../../../assets/images/globe_2.png')}
             style={styles.globeIllustration}
           />
 
@@ -68,14 +75,14 @@ const LocationScreen = () => {
               )}
             />
           </View>
+
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.continueButton} onPress={handleSubmit(onSubmit)}>
+              <Text style={styles.continueButtonText}>Continue</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </KeyboardAvoidingView>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.continueButton} onPress={handleSubmit(onSubmit)}>
-          <Text style={styles.continueButtonText}>Continue</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -109,6 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: height * 0.12,
+    paddingBottom: 40, // ensure space for button
   },
   globeIllustration: {
     width: width * 0.9,
@@ -138,17 +146,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 14,
     fontSize: width * 0.045,
-    textAlign: 'center',
+    textAlign: 'left',
     color: COLORS.TextPrimary,
     ...SHADOW.light,
   },
   buttonContainer: {
-    padding: 20,
-    zIndex: 2,
-    position: 'absolute',
-    bottom: 15,
+    marginTop: 30,
     width: '100%',
-    backgroundColor: COLORS.StaticWhite,
+    paddingHorizontal: 20,
   },
   continueButton: {
     backgroundColor: COLORS.ButtonPrimary,
